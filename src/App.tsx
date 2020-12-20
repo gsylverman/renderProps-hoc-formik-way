@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from "react";
+import SomeComp from "./components/hoc/SomeComp";
+import OtherComp, { ValuesType } from "./components/renderProps/OtherComp";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface AppProps {
+  someProps: string;
 }
 
-export default App;
+const App: FC<AppProps> = (props: AppProps) => {
+  console.log(props);
+
+  return (
+    <>
+      <div>App</div>
+      <OtherComp
+        values={{ a: "", b: "" }}
+        handleChange={(values: ValuesType) => {
+          // console.log(values);
+        }}
+        handleSubmit={(values: ValuesType) => {
+          console.log(values);
+        }}
+      >
+        {(values: ValuesType, handleChange, handleSubmit) => {
+          return (
+            <form onSubmit={handleSubmit}>
+              <input
+                onChange={handleChange}
+                type="text"
+                name="a"
+                value={values.a}
+              />
+              <input
+                onChange={handleChange}
+                type="text"
+                name="b"
+                value={values.b}
+              />
+              <input type="submit" />
+            </form>
+          );
+        }}
+      </OtherComp>
+    </>
+  );
+};
+
+export default SomeComp(App);
