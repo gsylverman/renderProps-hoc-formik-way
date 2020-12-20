@@ -1,2 +1,2 @@
-# Render Props component Formok way
+# Render Props component Formik way
 # hoc
