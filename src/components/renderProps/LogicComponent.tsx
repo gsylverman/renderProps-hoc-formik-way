@@ -5,7 +5,7 @@ export type ValuesType = {
   b: string;
 };
 
-export interface OtherCompProps {
+export interface LogicComponentProps {
   // children(values: ValuesType, handleChange: any): JSX.Element;
   children: (
     values: ValuesType,
@@ -17,7 +17,7 @@ export interface OtherCompProps {
   handleSubmit: any;
 }
 
-const OtherComp: FC<OtherCompProps> = ({
+const LogicComponent: FC<LogicComponentProps> = ({
   children,
   values,
   handleChange,
@@ -49,4 +49,4 @@ const OtherComp: FC<OtherCompProps> = ({
   );
 };
 
-export default OtherComp;
+export default LogicComponent;
